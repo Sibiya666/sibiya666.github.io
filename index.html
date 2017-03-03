@@ -6,41 +6,107 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="container">
-		<h2>Вопрос 1 из 23</h2>
+<div class="container container--start">
+	<h2>Битва знаний</h2>
 
-      <h3>Вопрос</h3>
+	<h3>Победите нашего робота и получите скидку 10% на все наши услуги</h3>
+	<fieldset >
+		<p>Все просто. В следующие несколько минут  мы проверим Ваши знания
+		компьютера и  информационных технологий. Если вдруг окажется,
+		что вы знаете не меньше , чем этот  забавный робот, так уж и  быть,
+		скидка в 10% ваша! Приступим?</p>
+		<p>Ну что,  сразимся, человечешко?
+			Посмотрим на что способны твои мясные мозги!
+		</p>
+	</fieldset>
+	<a class="btn btn--start">начать</a>
+
+</div>
+
+	<div class="container">
+		<h2 class="container--title">Битва знаний</h2>
+
+      <h3 class="counter">Вопрос <span>3 из 20</span> </h3>
+		<div class="question">
+			<p class="question__description">Как называется эта голубая
+			штукенция, изображенная  на фотографии?</p>
+			<img src="" alt="" class="question__img">
+		</div>
       <fieldset >
 
-        <label for="1"  >Вариант ответа 1
+        <label for="1"  >
+	        <span></span>
+	        Нет сомнений  в том,  что штукенция ни что иное,
+	        как оперативное запоминающее устройство
           <input type="radio" data-index='1' id='1' name='o' >
-          <span></span>
+
         </label>
 
 
-        <label for="2" class="cv" >Вариант ответа 2
+        <label for="2" class="cv" >
+	        <span></span>
+	        Это центральный процессор
           <input type="radio" data-index='2' id='2' name='o' data-correct>
-          <span></span>
+
         </label>
 
 
-        <label for="3" class="cv" >Вариант ответа 3
+        <label for="3" class="cv" >
+	        <span></span>
+	        Это же видеокарта
           <input type="radio" data-index='3' id='3' name='o'>
-          <span></span>
+
         </label>
 
 
-        <label for="4" class="cv" >Вариант ответа 4
+        <label for="4" class="cv" >
+	        <span></span>
+	        Жесткий диск
           <input type="radio" data-index='4' id='4' name='o'>
-          <span></span>
+
         </label>
 
       </fieldset>
+		<a class="btn btn--next">следующий вопрос</a>
+		<a class="btn btn--restart">сначала</a>
+		<a class="btn btn--homepage">на главную</a>
 	</div>
 
-  <a class="btn btn--next">следующий вопрос</a>
-  <a class="btn btn--restart">сначала</a>
-  <a class="btn btn--homepage">на главную</a>
+<div class="container container--finish">
+	<h2>Вопрос 1 из 23</h2>
+
+	<h3>Вопрос</h3>
+	<fieldset >
+
+		<label for="1"  >Вариант ответа 1
+			<input type="radio" data-index='1' id='1' name='o' >
+			<span></span>
+		</label>
+
+
+		<label for="2" class="cv" >Вариант ответа 2
+			<input type="radio" data-index='2' id='2' name='o' data-correct>
+			<span></span>
+		</label>
+
+
+		<label for="3" class="cv" >Вариант ответа 3
+			<input type="radio" data-index='3' id='3' name='o'>
+			<span></span>
+		</label>
+
+
+		<label for="4" class="cv" >Вариант ответа 4
+			<input type="radio" data-index='4' id='4' name='o'>
+			<span></span>
+		</label>
+
+	</fieldset>
+	<a class="btn btn--next">следующий вопрос</a>
+	<a class="btn btn--restart">сначала</a>
+	<a class="btn btn--homepage">на главную</a>
+</div>
+
 
 </body>
 <script src='js.js'></script>

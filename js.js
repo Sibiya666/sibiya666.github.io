@@ -28,15 +28,17 @@ function correctTarget(evt) {
   return event.target.hasAttribute('data-index');
 }
 
+/**  @param {HTMLelement} elem*/
 function elemCondition(elem) {
   if (elem.hasAttribute('data-correct')) {
     elem.parentNode.classList.add('luck');
   } else {
     elem.parentNode.classList.add('fuck');
-    document.querySelector('input[data-correct]').parentNode.classList.add('luck');
+  container .querySelector('input[data-correct]').parentNode.classList.add('luck');
   }
 }
 
+/**  @param {MouseEvent} event*/
 function validate(event) {
   if (correctTarget(event)) {
     elemCondition(event.target);
