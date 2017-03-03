@@ -1,113 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="container container--start">
-	<h2>Битва знаний</h2>
-
-	<h3>Победите нашего робота и получите скидку 10% на все наши услуги</h3>
-	<fieldset >
-		<p>Все просто. В следующие несколько минут  мы проверим Ваши знания
-		компьютера и  информационных технологий. Если вдруг окажется,
-		что вы знаете не меньше , чем этот  забавный робот, так уж и  быть,
-		скидка в 10% ваша! Приступим?</p>
-		<p>Ну что,  сразимся, человечешко?
-			Посмотрим на что способны твои мясные мозги!
-		</p>
-	</fieldset>
-	<a class="btn btn--start">начать</a>
-
+  <h2 class="container__title">Битва знаний</h2>
+  <h3 class="container__description">Победите нашего робота и получите скидку
+    10% на все наши услуги</h3>
+  <div class="content">
+    <p class="content__description">Все просто. В следующие несколько минут мы
+      проверим Ваши знания
+      компьютера и информационных технологий. Если вдруг окажется,
+      что вы знаете не меньше , чем этот забавный робот, так уж и быть,
+      скидка в 10% ваша! Приступим?</p>
+    <p class="content__description content__description--robo">Ну что,
+      сразимся, человечешко?
+      Посмотрим на что способны твои мясные мозги!
+    </p>
+    <a class="btn btn--start">начать</a>
+    <img src="img/bender.png" alt="" class="content__img">
+  </div>
 </div>
 
-	<div class="container">
-		<h2 class="container--title">Битва знаний</h2>
-
-      <h3 class="counter">Вопрос <span>3 из 20</span> </h3>
-		<div class="question">
-			<p class="question__description">Как называется эта голубая
-			штукенция, изображенная  на фотографии?</p>
-			<img src="" alt="" class="question__img">
-		</div>
-      <fieldset >
-
-        <label for="1"  >
-	        <span></span>
-	        Нет сомнений  в том,  что штукенция ни что иное,
-	        как оперативное запоминающее устройство
-          <input type="radio" data-index='1' id='1' name='o' >
-
-        </label>
 
 
-        <label for="2" class="cv" >
-	        <span></span>
-	        Это центральный процессор
-          <input type="radio" data-index='2' id='2' name='o' data-correct>
 
-        </label>
+<template id="container-template">
+  <div class="container container--question">
+    <h2 class="container__title">Битва знаний</h2>
+    <h3 class="counter">Вопрос <span>3 из 20</span></h3>
+    <div class="question" >
+      <img src="" alt="" class="question__img">
+    </div>
+    <div class="content content--answers">
+      <label for="answer-one" class="answer">
 
+        <p class="answer__description" data-answer="one"></p>
+        <input type="radio" data-index='1' id='answer-one' name='o'>
 
-        <label for="3" class="cv" >
-	        <span></span>
-	        Это же видеокарта
-          <input type="radio" data-index='3' id='3' name='o'>
-
-        </label>
-
-
-        <label for="4" class="cv" >
-	        <span></span>
-	        Жесткий диск
-          <input type="radio" data-index='4' id='4' name='o'>
-
-        </label>
-
-      </fieldset>
-		<a class="btn btn--next">следующий вопрос</a>
-		<a class="btn btn--restart">сначала</a>
-		<a class="btn btn--homepage">на главную</a>
-	</div>
-
-<div class="container container--finish">
-	<h2>Вопрос 1 из 23</h2>
-
-	<h3>Вопрос</h3>
-	<fieldset >
-
-		<label for="1"  >Вариант ответа 1
-			<input type="radio" data-index='1' id='1' name='o' >
-			<span></span>
-		</label>
-
-
-		<label for="2" class="cv" >Вариант ответа 2
-			<input type="radio" data-index='2' id='2' name='o' data-correct>
-			<span></span>
-		</label>
-
-
-		<label for="3" class="cv" >Вариант ответа 3
-			<input type="radio" data-index='3' id='3' name='o'>
-			<span></span>
-		</label>
-
-
-		<label for="4" class="cv" >Вариант ответа 4
-			<input type="radio" data-index='4' id='4' name='o'>
-			<span></span>
-		</label>
-
-	</fieldset>
-	<a class="btn btn--next">следующий вопрос</a>
-	<a class="btn btn--restart">сначала</a>
-	<a class="btn btn--homepage">на главную</a>
-</div>
-
+      </label>
+      <label for="answer-two" class="answer">
+        <span class="answer__counter" data-index="2"></span>
+        <p class="answer__description" data-answer="two"></p>
+        <input type="radio" data-index='2' id='answer-two' name='o'
+               data-correct>
+      </label>
+      <label for="answer-three" class="answer">
+        <span class="answer__counter"></span>
+        <p class="answer__description" data-answer="three"></p>
+        <input type="radio" data-index='3' id='answer-three' name='o'>
+      </label>
+      <label for="answer-four" class="answer">
+        <span class="answer__counter"></span>
+        <p class="answer__description" data-answer="fou"></p>
+        <input type="radio" data-index='4' id='answer-four' name='o'>
+      </label>
+    </div>
+    <a class="btn btn--next">следующий вопрос</a>
+    <a class="btn btn--restart">сначала</a>
+    <a href='/index.html' class="btn btn--homepage">на главную</a>
+  </div>
+</template>
 
 </body>
-<script src='js.js'></script>
+<script src='js/render-element.js'></script>
+<script src='js/main.js'></script>
 </html>
