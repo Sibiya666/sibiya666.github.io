@@ -45,8 +45,7 @@ window.renderElement = (function () {
 
   return function (number) {
     body.appendChild(newElement);
-    console.log('gfe');
-    console.log(numberQuestion);
+
     var container = document.querySelector('.container--question');
     var counter = document.querySelector('.counter');
     var question = document.querySelector('.question');

@@ -50,6 +50,7 @@ function onBtnNextClick() {
 function onRestartBtntClick() {
   window.renderElement(STEP_NUMBER_QUESTION);
 }
+
 function toggleListenerElement() {
   answers = document.querySelector('.content--answers');
   checkElements = document.querySelectorAll('input');
