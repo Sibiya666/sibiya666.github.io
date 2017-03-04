@@ -3,6 +3,10 @@ var containerStart = document.querySelector('.container--start');
 var btnStart = containerStart.querySelector('.btn--start');
 var body = document.querySelector('body');
 /** @constant {number}*/
+var scooreQuantity = 0;
+/** @constant {number}*/
+var SCOORE_STEP = 1;
+/** @constant {number}*/
 var STEP_NUMBER_QUESTION = 1;
 var currentElement = null;
 var container;
@@ -10,6 +14,7 @@ var answers;
 var restartBtn;
 var checkElements;
 var nextBtnQuestion;
+
 
 /**
  * @param {Event} evt
@@ -23,6 +28,7 @@ function correctTarget(evt) {
 function elemCondition(elem) {
   if (elem.hasAttribute('data-correct')) {
     elem.previousElementSibling.classList.add('luck');
+    scooreQuantity += 1;
   } else {
     elem.previousElementSibling.classList.add('fuck');
     answers.querySelector('input[data-correct]').classList.add('luck');
@@ -31,7 +37,6 @@ function elemCondition(elem) {
   if (nextBtnQuestion) {
     nextBtnQuestion.removeAttribute('hidden');
   }
-
 }
 
 /**  @param {MouseEvent} event*/
@@ -73,6 +78,7 @@ function onBtnNextClick() {
 }
 
 function onRestartBtnClick() {
+  scooreQuantity = 0;
   showModal(window.renderElement(STEP_NUMBER_QUESTION));
   toggleListenerElement();
 }
