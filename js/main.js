@@ -1,8 +1,10 @@
 'use strict';
 var containerStart = document.querySelector('.container--start');
 var btnStart = containerStart.querySelector('.btn--start');
+var body = document.querySelector('body');
 /** @constant {number}*/
 var STEP_NUMBER_QUESTION = 1;
+var currentElement = null;
 var container;
 var answers;
 var restartBtn;
@@ -25,6 +27,11 @@ function elemCondition(elem) {
     elem.previousElementSibling.classList.add('fuck');
     answers.querySelector('input[data-correct]').classList.add('luck');
   }
+
+  if (nextBtnQuestion) {
+    nextBtnQuestion.removeAttribute('hidden');
+  }
+
 }
 
 /**  @param {MouseEvent} event*/
@@ -37,6 +44,23 @@ function validate(event) {
   }
 }
 
+function toggleListenerElement() {
+  answers = document.querySelector('.content--answers');
+  checkElements = document.querySelectorAll('input');
+  nextBtnQuestion = document.querySelector('.btn--next');
+  restartBtn = document.querySelector('.btn--restart');
+
+  if (nextBtnQuestion) {
+    nextBtnQuestion.removeEventListener('click', onBtnNextClick);
+    nextBtnQuestion.addEventListener('click', onBtnNextClick);
+  }
+
+  restartBtn .removeEventListener('click', onRestartBtnClick);
+  answers.removeEventListener('click', validate);
+  restartBtn .addEventListener('click', onRestartBtnClick);
+  answers.addEventListener('click', validate);
+}
+
 /** @return {number} */
 function getCurrentNumberQuestion() {
   container = document.querySelector('.container--question');
@@ -44,30 +68,29 @@ function getCurrentNumberQuestion() {
 }
 
 function onBtnNextClick() {
-  window.renderElement(getCurrentNumberQuestion() + STEP_NUMBER_QUESTION);
+  showModal(window.renderElement(getCurrentNumberQuestion() + STEP_NUMBER_QUESTION));
+  toggleListenerElement();
 }
 
-function onRestartBtntClick() {
-  window.renderElement(STEP_NUMBER_QUESTION);
+function onRestartBtnClick() {
+  showModal(window.renderElement(STEP_NUMBER_QUESTION));
+  toggleListenerElement();
 }
 
-function toggleListenerElement() {
-  answers = document.querySelector('.content--answers');
-  checkElements = document.querySelectorAll('input');
-  nextBtnQuestion = document.querySelector('.btn--next');
-  restartBtn = document.querySelector('.btn--restart');
-  nextBtnQuestion.removeEventListener('click', onBtnNextClick);
-  restartBtn .removeEventListener('click', onRestartBtntClick);
-  answers.removeEventListener('click', validate);
-  nextBtnQuestion.addEventListener('click', onBtnNextClick);
-  restartBtn .addEventListener('click', onRestartBtntClick);
-  answers.addEventListener('click', validate);
+/** @param {HTMLElement} newElement*/
+function showModal(newElement) {
+  if (currentElement) {
+    body.replaceChild(newElement, currentElement);
+  } else {
+    body.appendChild(newElement);
+  }
+  currentElement = newElement;
 }
 
 function onBtnStartClick() {
   containerStart.remove();
   btnStart.removeEventListener('click', onBtnStartClick);
-  window.renderElement(STEP_NUMBER_QUESTION);
+  showModal(window.renderElement(STEP_NUMBER_QUESTION));
   toggleListenerElement();
 }
 

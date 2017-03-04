@@ -1,9 +1,8 @@
 'use strict';
 window.renderElement = (function () {
-  var body = document.querySelector('body');
   var templateElement = document.querySelector('#container-template');
   var elementToClone = templateElement.content.querySelector('.container');
-  var newElement = elementToClone.cloneNode(true);
+  var element;
   var numberQuestion;
   var btnNextQuestion;
   var data = {
@@ -43,20 +42,18 @@ window.renderElement = (function () {
     return Object.keys(data).length;
   }
 
-  return function (number) {
-    body.appendChild(newElement);
-
-    var container = document.querySelector('.container--question');
-    var counter = document.querySelector('.counter');
-    var question = document.querySelector('.question');
-    var answerOne = document.querySelector('p[data-answer="one"]');
-    var answerTwo = document.querySelector('p[data-answer="two"]');
-    var answerThree = document.querySelector('p[data-answer="three"]');
-    var answerFou = document.querySelector('p[data-answer="fou"]');
+  /** @param {number} number*/
+  function renderContent(number) {
+    var counter = element.querySelector('.counter');
+    var question = element.querySelector('.question');
+    var answerOne = element.querySelector('p[data-answer="one"]');
+    var answerTwo = element.querySelector('p[data-answer="two"]');
+    var answerThree = element.querySelector('p[data-answer="three"]');
+    var answerFou = element.querySelector('p[data-answer="fou"]');
     numberQuestion = number;
-    btnNextQuestion = document.querySelector('.btn--next');
+    btnNextQuestion = element.querySelector('.btn--next');
 
-    container.setAttribute('data-question-number', numberQuestion);
+    element.setAttribute('data-question-number', numberQuestion);
     counter.innerText = 'Вопрос ' + numberQuestion + ' из ' +
       getLengthData();
     question.innerText = data[numberQuestion].question;
@@ -64,9 +61,19 @@ window.renderElement = (function () {
     answerTwo.innerText = data[numberQuestion].answerTwo;
     answerThree.innerText = data[numberQuestion].answerThree;
     answerFou.innerText = data[numberQuestion].answerFou;
+  }
+
+  /** @param {number} number
+   * @return {HTMLElement}
+   */
+  return function (number) {
+    element = elementToClone.cloneNode(true);
+    renderContent(number);
 
     if (numberQuestion === getLengthData()) {
       btnNextQuestion.remove();
     }
+
+    return element;
   };
 })();
